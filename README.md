@@ -13,7 +13,7 @@ if [ -e "$1" ]; then
   echo "Le fichier existe"
 else
   touch "$1"
-  echo "Le fichier a été créé"
+  echo "Le fichier a ete cree"
 fi
 ```
 
@@ -46,12 +46,12 @@ Exercice 3 - Compter lignes et mots
 FILE=$1
 
 if [ -z "$FILE" ]; then
-  echo "Veuillez fournir un fichier en paramètre."
+  echo "Veuillez fournir un fichier en parametre."
   exit 1
 fi
 
 if [ ! -f "$FILE" ]; then
-  echo "Fichier non trouvé."
+  echo "Fichier non trouve."
   exit 2
 fi
 
@@ -70,7 +70,7 @@ calculs() {
   b=$2
 
   echo "Somme: $((a + b))"
-  echo "Différence: $((a - b))"
+  echo "Difference: $((a - b))"
   echo "Produit: $((a * b))"
   echo "Quotient: $((a / b))"
   echo "Racine carrée de $a: $(echo "sqrt($a)" | bc -l)"
