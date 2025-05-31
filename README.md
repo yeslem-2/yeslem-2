@@ -1,21 +1,118 @@
-<h1 align="center">Hi 👋, I'm Salinase</h1>
-<h3 align="center">Full-Stack Developer | Open-Source Enthusiast | Turning Ideas into Scalable Solutions</h3>
+TP5 - Système d’Exploitation - Solutions
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=yeslem&label=Profile%20views&color=0e75b6&style=flat" alt="yeslem" /> </p>
+Exercice 1 - Vérification et création de fichier
+1. Créer un script shell qui prend un nom de fichier en argument :
+```bash
+#!/bin/bash
+if [ -z "$1" ]; then
+  echo "Usage: $0 <nom_du_fichier>"
+  exit 1
+fi
 
-<p align="left"> <a href="https://twitter.com/" target="blank"><img src="https://img.shields.io/twitter/follow/?logo=twitter&style=for-the-badge" alt="" /></a> </p>
+if [ -e "$1" ]; then
+  echo "Le fichier existe"
+else
+  touch "$1"
+  echo "Le fichier a été créé"
+fi
+```
 
-- 📫 How to reach me **yeslema55@gmail.com**
+2. Test du script :
+```bash
+./script.sh fichier_existant.txt
+./script.sh fichier_inexistant.txt
+```
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-</p>
+Exercice 2 - Boucle for
+1. Affichage des nombres de 1 à 10 :
+```bash
+#!/bin/bash
+for i in {1..10}; do
+  echo $i
+done
+```
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="arduino" width="40" height="40"/> </a> <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a> <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://laravel.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-plain-wordmark.svg" alt="laravel" width="40" height="40"/> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://nestjs.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nestjs/nestjs-plain.svg" alt="nestjs" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://www.oracle.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg" alt="oracle" width="40" height="40"/> </a> <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> </p>
+2. Affichage des nombres pairs de 2 à 10 :
+```bash
+#!/bin/bash
+for i in {2..10..2}; do
+  echo $i
+done
+```
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=yeslem&show_icons=true&locale=en&layout=compact" alt="yeslem" /></p>
+Exercice 3 - Compter lignes et mots
+```bash
+#!/bin/bash
+FILE=$1
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=yeslem&show_icons=true&locale=en" alt="yeslem" /></p>
+if [ -z "$FILE" ]; then
+  echo "Veuillez fournir un fichier en paramètre."
+  exit 1
+fi
 
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=yeslem&" alt="yeslem" /></p>
+if [ ! -f "$FILE" ]; then
+  echo "Fichier non trouvé."
+  exit 2
+fi
+
+lignes=$(wc -l < "$FILE")
+mots=$(wc -w < "$FILE")
+echo "Nombre de lignes : $lignes"
+echo "Nombre de mots : $mots"
+```
+
+Exercice 4 - Fonction sur deux nombres
+```bash
+#!/bin/bash
+
+calculs() {
+  a=$1
+  b=$2
+
+  echo "Somme: $((a + b))"
+  echo "Différence: $((a - b))"
+  echo "Produit: $((a * b))"
+  echo "Quotient: $((a / b))"
+  echo "Racine carrée de $a: $(echo "sqrt($a)" | bc -l)"
+  echo "Racine carrée de $b: $(echo "sqrt($b)" | bc -l)"
+}
+
+calculs $1 $2
+```
+
+Exercice 5 - Fonction avec plusieurs arguments
+```bash
+#!/bin/bash
+
+plus_grand() {
+  max=$1
+  for n in "$@"; do
+    if (( n > max )); then
+      max=$n
+    fi
+  done
+  echo "Le plus grand est : $max"
+}
+
+plus_grand "$@"
+echo "Paramètres passés : $@"
+```
+
+Exercice 6 - Script de sauvegarde
+```bash
+#!/bin/bash
+
+DIR=$1
+BACKUP_DIR=./backups
+mkdir -p "$BACKUP_DIR"
+
+DATE=$(date +%F)
+ARCHIVE="$BACKUP_DIR/backup-$DATE.tar.gz"
+
+tar -czf "$ARCHIVE" "$DIR"
+
+# Supprimer les sauvegardes de plus de 7 jours
+find "$BACKUP_DIR" -type f -name "backup-*.tar.gz" -mtime +7 -exec rm {} \;
+
+echo "Sauvegarde créée : $ARCHIVE"
+```
